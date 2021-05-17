@@ -8,9 +8,14 @@ const io = require('socket.io')(process.env.CHAT_SERVER, {
   }
 })
 
+const users = {}
+
 io.on('connection', socket => {
-  socket.emit('chat-message', 'connected')
-  socket.on('send-chat-message', message => {
-    socket.broadcast.emit('send-chat-message', message)
+  socket.on('new-user', name => {
+    users[socket.id] = name
+    socket.broadcast.emit('user-connected', name)
+  })  
+   socket.on('send-chat-message', message => {
+    socket.broadcast.emit('chat-message', message)
   })
 })
