@@ -9,8 +9,8 @@ const io = require('socket.io')(process.env.CHAT_SERVER, {
 })
 
 io.on('connection', socket => {
-  socket.emit('chat-message', 'Hello World')
+  socket.emit('chat-message', 'connected')
   socket.on('send-chat-message', message => {
-    console.log(message);
+    socket.broadcast.emit('send-chat-message', message)
   })
 })
