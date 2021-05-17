@@ -5,6 +5,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Generic Chat Bot</title>
+  <!-- Import socket IO to the front end to make it work in the client -->
+  <script defer src="http://localhost:3001/socket.io/socket.io.js"></script>
+  <script defer src="client.js"></script>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-self: center;
+    }
+    #message-container {
+      width: 80%;
+      max-width: 1200px;
+    }
+
+    #message-container div {
+      background-color: #CCC;
+      padding: 5px;
+    }
+
+    #message-container div:nth-child(2n) {
+      background-color: #FFF;
+    }
+  </style>
 </head>
 <body>
   <div class="message-container"></div>
@@ -13,4 +37,4 @@
     <button type="submit" id="send-button">Send</button>
   </from>
 </body>
-</html>
+</html> 
